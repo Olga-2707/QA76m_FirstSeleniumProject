@@ -45,6 +45,28 @@ public class FindElementsHW {
         //что находит?
     }
 
+    @Test
+    public void findElementXPath(){
+        driver.findElement(By.xpath("//h2"));
+
+        driver.findElement(By.xpath("//*[@id='bar-notification']"));
+
+        driver.findElement(By.xpath("//div[@class='details']"));
+
+        driver.findElement(By.xpath("//div[@class='product-item']"));
+
+        driver.findElement(By.xpath("//*[contains(@title,'Show details')]"));
+
+        driver.findElement(By.xpath("//style[@type='text/css'][@xpath='1']"));
+
+        driver.findElement(By.xpath("//*[contains(@href, 'cheap-own-computer')]"));
+
+        driver.findElement(By.xpath("//input[@type='button'][@value='Vote']"));
+
+        driver.findElement(By.xpath("//div/a[@href='/']"));
+
+        driver.findElement(By.xpath("//a[@href='/digital-downloads'][@xpath='1']"));
+    }
 
     @AfterMethod(enabled = false)
     public void tearDown(){

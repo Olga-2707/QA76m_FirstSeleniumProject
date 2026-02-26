@@ -146,18 +146,21 @@ public class FindElementsTests {
         driver.findElement(By.xpath("//*[@for='city']"));
 
         //driver.findElement(By.cssSelector("[href^='/let']"));
+        //если нужно найти по первому слову напр.в ссылке - start-with()
         driver.findElement(By.xpath("//*[starts-with(@href,'/let')]"));
 
         //contains text
+        //содержит текст - метод contains(text(),'text')
         WebElement text = driver.findElement(By.xpath("//*[contains(text(),'best services')]"));
         System.out.println(text.getText());
 //второй вариант поиска текста
 //        WebElement text1 = driver.findElement(By.xpath("//*[contains(.,'best services')]"));
 
+        //equals text_ когда по части текста ищем метод text()
         WebElement text2 = driver.findElement(By.xpath("//*[text()='Find your car now!']"));
         System.out.println(text2.getText());
 
-        //equals text
+        //equals text альтернатива поиска текста
         WebElement element = driver.findElement(By.xpath("//*[.='Find your car now!']"));
         System.out.println(element.getText());
 
@@ -171,6 +174,19 @@ public class FindElementsTests {
     driver.findElement(By.xpath("//*[@class='feedback-card']//*[@class='feedback-date']"));
 //cssSelector -> div>a   xPath -> //div/a
 //cssSelector -> div a   xPath-> //div//a
+
+//parent
+        driver.findElement(By.xpath("//h1/parent::*"));
+        driver.findElement(By.xpath("//h1/parent::div"));//аналогично
+        driver.findElement(By.xpath("//h1/.."));// .. движение наверх к родителю
+//ancestor
+        driver.findElement(By.xpath("//h2/ancestor::*")); //все предки наверх
+        driver.findElement(By.xpath("//h2/ancestor::div[2]")); // two steps вверх
+        driver.findElement(By.xpath("//h2/ancestor::div")); //выдает все div выше
+
+
+
+
 
 
     }

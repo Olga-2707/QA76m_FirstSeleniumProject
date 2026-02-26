@@ -18,29 +18,45 @@ public class FindElementInTable {
     public void setUp() {
         driver = new ChromeDriver();
         driver.get("https://www.w3schools.com/css/css_table.asp");
-        driver.manage().window().maximize();
+//        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
     }
 
     @Test
-    public void findElementInTable() {
+    public void findCssElementInTable() {
 // get number of rows
-//        List<WebElement> rows = driver.findElements(By.cssSelector("tr"));
-//        System.out.println(rows.size());
-//
-//        for (int i = 0; i < rows.size(); i++) {
-//            System.out.println(rows.get(i).getText());
-//            System.out.println("**************");
-//        }
-//        for (WebElement element : rows) {
-//            System.out.println(element.getText());
-//            System.out.println("******************");
-//        }
-//        //get row 4
-//        WebElement mexico = driver.findElement(By.cssSelector("#customers tr:nth-child(4)"));
-//        System.out.println(mexico.getText());
+        List<WebElement> rows = driver.findElements(By.cssSelector("tr"));
+        System.out.println(rows.size());
 
+        for (int i = 0; i < rows.size(); i++) {
+            System.out.println(rows.get(i).getText());
+            System.out.println("**************");
+        }
+        for (WebElement element : rows) {
+            System.out.println(element.getText());
+            System.out.println("******************");
+        }
+//        //get row 4
+        WebElement mexico = driver.findElement(By.cssSelector("#customers tr:nth-child(4)"));
+        System.out.println(mexico.getText());
+        System.out.println("***************");
+        //get row 4, last element
+//        WebElement country = driver.findElement(By.cssSelector("#customers tr:nth-child(5) td:nth-child(3)"));
+        WebElement country = driver.findElement(By.cssSelector("#customers tr:nth-child(5) td:last-child"));
+        System.out.println(country.getText());
+        System.out.println("*************");
+    }
+
+    @Test
+    public void tableXpath() {
+        List<WebElement> rows = driver.findElements(By.xpath("//tr"));
+        System.out.println(rows.size());
+
+        WebElement mexico = driver.findElement(By.xpath("//*[@id='customers']//tr[4]"));
+        System.out.println(mexico.getText());
+
+        driver.findElement(By.xpath("//*[@id='customers']//tr[4]//td[last()]"));
     }
 
 
